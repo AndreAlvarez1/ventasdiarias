@@ -28,12 +28,12 @@
     <h2>Ventas del día</h2>
     <p>Razón Social: {{this.memoria.empresa.Razon}}</p>
 
-
+<!--
     <ion-item>
         <ion-label>Start Time</ion-label>
         <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="fecha"></ion-datetime>
     </ion-item>
-
+-->
     <ion-item>
        <ion-label>Locales</ion-label>
        <ion-select [(ngModel)]="local" interface="localAlertOpts">
@@ -95,6 +95,7 @@
 
 </div>
 
-  <button ion-button (click)="call()">Llamar Gour-net</button>
+  <button ion-button (click)="call(224490070)">Llamar Oficina Gour-net</button>
+  <button ion-button (click)="call(56999189588)">Llamar Emergencias</button>
 
 </ion-content>

@@ -1,0 +1,4 @@
+#Wed Jan 16 16:23:48 CLST 2019
+base.0=/Users/andre/Desktop/Programando/Informes app/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

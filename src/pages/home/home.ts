@@ -58,11 +58,16 @@ formatoFecha(fecha){
 
 recargarDatos(local){
   //comentado porque solo se muestran informes del dia actual//
-  this.formatoFecha(this.fecha);
-    //  this.formatoFecha(this.fechaHoy)
+  //this.formatoFecha(this.fecha);
+      this.formatoFecha(this.fechaHoy)
       this.local = local;
+      if (this.barChart && this.lineChart){
+        this.removeData(this.barChart);
+        this.removeData(this.lineChart);
+      }
       this.cargaDatos();
 }
+
 
 
 cargaDatos(){
@@ -112,6 +117,7 @@ dibujarVentas(ventas){
 
 
 dibujarBarras(ayer,hoy){
+  console.log("llenando this barChart", this.barChart)
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'bar',
@@ -142,7 +148,7 @@ dibujarBarras(ayer,hoy){
           }
 
       });
-
+console.log("saliendo",this.barChart);
 }
 
 dibujarLineas(ventas){
@@ -167,6 +173,13 @@ dibujarLineas(ventas){
       });
 }
 
+removeData(chart) {
+     chart.data.labels.pop();
+     chart.data.datasets.pop();
+     chart.update();
+}
+
+
 showAlert() {
    const alert = this.alertCtrl.create({
      title: 'Lo Sentimos',
@@ -177,8 +190,8 @@ showAlert() {
 }
 
 
-call(){
-  this.callNumber.callNumber("56984292373", true)
+call(numero){
+  this.callNumber.callNumber(numero, true)
     .then(res => console.log('Launched dialer!', res))
     .catch(err => console.log('Error launching dialer', err));
 }
