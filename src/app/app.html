@@ -1,0 +1,23 @@
+<ion-menu [content]="content" persistent="true">
+  <ion-header >
+    <ion-toolbar class="naranjo">
+      <ion-title>Gour-net</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage('HomePage')">
+        Ventas del Día
+      </button>
+      <button ion-item (click)="openPage(friendsPage)">
+        Soporte
+      </button>
+      <button ion-item (click)="openPage(eventsPage)">
+        Producto del Mes
+      </button>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

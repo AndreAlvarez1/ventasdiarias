@@ -1,0 +1,66 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding class="contenedor">
+
+  <ion-grid>
+
+      <ion-row class="caja-logo">
+        <ion-col col-12 col-md-4 offset-md-4>
+          <img src="../../assets/imgs/logo2.svg">
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row #cajaRut  class="esconder">
+          <ion-col col-12 col-md-4 offset-md-4>
+            <div>
+            <ion-item >
+              <ion-input type="text" [(ngModel)]="rut" placeholder="Rut Empresa" value="76.022.389-1"></ion-input>
+            </ion-item>
+              <button ion-button block outline color="light"(click)="validarRut(rut)" >Validar</button>
+            </div>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row #datosUsuario class="datos">
+          <ion-col col-12 col-md-4 offset-md-4>
+              <ion-item>
+                <ion-input type="password" [(ngModel)]="token" placeholder="Password" ></ion-input>
+              </ion-item>
+          </ion-col>
+
+          <ion-col col-6 col-md-2 offset-md-4>
+            <button ion-button block outline color="light" (click)="refrescar()">Volver</button>
+          </ion-col>
+          <ion-col col-6 col-md-2>
+            <button ion-button block outline color="light" (click)="validarToken(token)" >Entrar</button>
+          </ion-col>
+
+
+          <ion-col col-8 offset-4>
+            <a href="http://www.gour-net.cl">Olvidé mi contraseña</a>
+          </ion-col>
+      </ion-row>
+
+
+
+
+
+
+      <ion-row class="pie">
+          <ion-col col-12>
+            <p>Versión 1.0</p>
+        </ion-col>
+      </ion-row>
+
+
+  </ion-grid>
+</ion-content>

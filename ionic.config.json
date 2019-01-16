@@ -1,0 +1,13 @@
+{
+  "name": "informes",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path":"/v1",
+      "proxyUrl": "http://test.apipdv.clubgournet.cl/api"
+    }
+  ]
+}
