@@ -1,5 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
+
 
 /*
   Generated class for the MemoriaProvider provider.
@@ -15,7 +17,8 @@ locales: any;
 
 
 
-  constructor(public http: Http) {
+  constructor(public http: Http,
+              private storage: Storage) {
     console.log('Hello MemoriaProvider Provider');
   }
 
@@ -23,4 +26,16 @@ locales: any;
     this.empresa = undefined;
     this.locales = undefined;
   }
+
+  guardarDato(campo,valor){
+    this.storage.set(campo, valor);
+  }
+
+  leerDato(campo){
+    return this.storage.get(campo).then((val) => {
+      return val
+  });
+  }
+
+
 }

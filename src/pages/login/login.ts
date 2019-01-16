@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { MemoriaProvider} from '../../providers/memoria/memoria';
 import { AlertController } from 'ionic-angular';
 
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -26,7 +27,8 @@ export class LoginPage {
   @ViewChild('botonDesaparecer', {read: ElementRef}) botonDesaparecer;
 
 
-  public rut: string;
+  public rut: any;
+  public token: any;
   public rutOk: boolean;
   public mail: string;
   public password :string;
@@ -38,20 +40,30 @@ export class LoginPage {
               public navParams: NavParams,
               public conector: ConectorProvider,
               public renderer: Renderer,
-              public memoria: MemoriaProvider) {
+              public memoria: MemoriaProvider
+             ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  ngOnInit(){
-    this.rutOk = false;
-    this.conector.traedatosGet("ventasdiarias/empresas")
-    .subscribe(datos => {console.log(datos.Data);
-                         this.empresas = datos.Data;
-                        })
-  }
+
+ngOnInit(){
+    this.rut = this.memoria.leerDato("miRut")
+    .then(dato => this.rut = dato);
+
+    this.memoria.leerDato("miToken")
+    .then(dato => this.token = dato);
+
+    /*
+      this.rutOk = false;
+      this.conector.traedatosGet("ventasdiarias/empresas")
+      .subscribe(datos => {console.log(datos.Data);
+                           this.empresas = datos.Data;
+                          })
+    */
+}
 
   esconderBoton(){
     this.renderer.setElementStyle(this.cajaRut.nativeElement, 'display', 'none');
@@ -84,17 +96,16 @@ validarRut(rut){
 
 validarToken(token){
   console.log(token);
+  const rut = this.memoria.empresa.Rut;
   if (token == this.memoria.empresa.Token){
       console.log("match!");
-      this.navCtrl.push(HomePage);
+      this.memoria.guardarDato("miRut",rut);
+      this.memoria.guardarDato("miToken",token);
+            this.navCtrl.push(HomePage);
     }else{
       this.errorToken();
     }
 }
-
-
-
-
 
 traerLocales(tabla){
       this.conector.traedatosGet(`ventasdiarias/empresa/tabla/${tabla}/locales`)
@@ -104,31 +115,31 @@ traerLocales(tabla){
 }
 
 
-  irVista(){
+irVista(){
     this.navCtrl.push(HomePage);
-  };
+};
 
-  errorRut() {
+errorRut() {
      const alert = this.alertCtrl.create({
        title: 'Error en el rut',
        subTitle: 'El rut no existe o fue mal digitado. Recuerda poner los puntos (.) y el guión (-) ',
        buttons: ['OK']
      });
      alert.present()
-  }
+}
 
-  errorToken() {
+errorToken() {
      const alert = this.alertCtrl.create({
        title: 'Error en el Token',
        subTitle: 'El token no coincide, intentalo de nuevo o ponte en contacto con Gour-net para que podamos ayudarte',
        buttons: ['OK']
      });
      alert.present()
-  }
+}
 
-  refrescar(){
+refrescar(){
     location.reload();
-  }
+}
 
 
 }

@@ -31,6 +31,9 @@
     },
     "call-number": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "cl.gournet.inf001"
     }
   },
   "dependent_plugins": {

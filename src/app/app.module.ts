@@ -11,6 +11,8 @@ import { HttpModule } from '@angular/http';
 import { ConectorProvider } from '../providers/conector/conector';
 import { MemoriaProvider } from '../providers/memoria/memoria';
 import { CallNumber } from '@ionic-native/call-number';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 
 
@@ -23,6 +25,7 @@ import { CallNumber } from '@ionic-native/call-number';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpModule,
   ],
   bootstrap: [IonicApp],
