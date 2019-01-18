@@ -51,7 +51,7 @@ ionViewDidLoad() {
 
 
 mesAnumero(mesAbreviado){
-  const mesNum: any;
+  var mesNum: "";
   switch (mesAbreviado) {
   case "Jan":
     mesNum = "01";
