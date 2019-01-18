@@ -23,7 +23,7 @@ export class HomePage {
   tabla: any;
   fecha: Date;
   fechaSelect: any;
-  fechaHoy: string = new Date().toISOString();
+  fechaChile: any = new Date();
   local: any;
 
   constructor(public navCtrl: NavController,
@@ -37,9 +37,11 @@ export class HomePage {
     }
 
 ngOnInit(){
-  this.formatoFecha(this.fechaHoy);
+
+  this.formatoFecha(this.fechaChile);
+  console.log("La Fecha de Chile es: ", this.fechaChile)
   this.cargaDatos();
-  console.log("esta es la empresa", this.memoria.empresa)
+  console.log("esta es la empresa", this.memoria.empresa);
 
 }
 
@@ -48,12 +50,58 @@ ionViewDidLoad() {
 }
 
 
+mesAnumero(mesAbreviado){
+  const mesNum: any;
+  switch (mesAbreviado) {
+  case "Jan":
+    mesNum = "01";
+    break;
+  case "Feb":
+    mesNum = "02";
+    break;
+  case "Mar":
+    mesNum = "03";
+    break;
+  case "Apr":
+    mesNum = "04";
+    break;
+  case "May":
+    mesNum = "05";
+    break;
+  case "Jun":
+    mesNum = "06";
+    break;
+  case  "Jul":
+    mesNum = "07";
+    break;
+  case  "Aug":
+    mesNum = "08";
+    break;
+  case  "Sep":
+    mesNum = "09";
+    break;
+  case  "Oct":
+    mesNum = "10";
+    break;
+  case  "Nov":
+    mesNum = "11";
+    break;
+  case  "Dec":
+    mesNum = "12";
+}
+  return mesNum;
+  console.log("mes Chile:", mesNum);
+}
+
+
 formatoFecha(fecha){
-      const anno = fecha.toString().substring(0,4);
-      const mes = fecha.toString().substring(5,7);
+      const anno = fecha.toString().substring(11,15);
       const dia = fecha.toString().substring(8,10);
+      const mesPalabra = fecha.toString().substring(4,7);
+      const mes = this.mesAnumero(mesPalabra);
       this.fechaSelect = dia+"-"+mes+"-"+anno;
 }
+
 
 
 recargarDatos(local){
@@ -117,7 +165,6 @@ dibujarVentas(ventas){
 
 
 dibujarBarras(ayer,hoy){
-  console.log("llenando this barChart", this.barChart)
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
           type: 'bar',
@@ -148,14 +195,13 @@ dibujarBarras(ayer,hoy){
           }
 
       });
-console.log("saliendo",this.barChart);
 }
 
 dibujarLineas(ventas){
       this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
-      labels: ["00:00","00:01","00:02","00:03","00:04","00:05","00:06","00:07","00:08","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
+      labels: ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
       datasets: [{
           data: ventas,
           label: "Ventas x Hora",

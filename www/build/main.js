@@ -142,7 +142,7 @@ var LoginPage = /** @class */ (function () {
     ], LoginPage.prototype, "botonDesaparecer", void 0);
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/andre/Desktop/Programando/Informes app/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n\n<ion-content padding class="contenedor">\n\n  <ion-grid>\n\n      <ion-row class="caja-logo">\n        <ion-col col-12 col-md-4 offset-md-4>\n          <img src="../../assets/imgs/logo2.svg">\n        </ion-col>\n      </ion-row>\n\n\n      <ion-row #cajaRut  class="esconder">\n          <ion-col col-12 col-md-4 offset-md-4>\n            <div>\n            <ion-item >\n              <ion-input type="text" [(ngModel)]="rut" placeholder="Rut Empresa"></ion-input>\n            </ion-item>\n              <button ion-button block outline color="light"(click)="validarRut(rut)" >Validar</button>\n            </div>\n\n        </ion-col>\n      </ion-row>\n\n      <ion-row #datosUsuario class="datos">\n          <ion-col col-12 col-md-4 offset-md-4>\n              <ion-item>\n                <ion-input type="password" [(ngModel)]="token" placeholder="Password" ></ion-input>\n              </ion-item>\n          </ion-col>\n\n          <ion-col col-6 col-md-2 offset-md-4>\n            <button ion-button block outline color="light" (click)="refrescar()">Volver</button>\n          </ion-col>\n          <ion-col col-6 col-md-2>\n            <button ion-button block outline color="light" (click)="validarToken(token)" >Entrar</button>\n          </ion-col>\n\n\n          <ion-col col-8 offset-4>\n            <a href="http://www.gour-net.cl">Olvidé mi contraseña</a>\n          </ion-col>\n      </ion-row>\n\n\n\n\n\n\n      <ion-row class="pie">\n          <ion-col col-12>\n            <p>Versión 0.0.1</p>\n        </ion-col>\n      </ion-row>\n\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/Informes app/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/andre/Desktop/Programando/ventasdiarias/src/pages/login/login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n\n<ion-content padding class="contenedor">\n\n  <ion-grid>\n\n      <ion-row class="caja-logo">\n        <ion-col col-12 col-md-4 offset-md-4>\n          <img src="../../assets/imgs/logo2.svg">\n        </ion-col>\n      </ion-row>\n\n\n      <ion-row #cajaRut  class="esconder">\n          <ion-col col-12 col-md-4 offset-md-4>\n            <div>\n            <ion-item >\n              <ion-input type="text" [(ngModel)]="rut" placeholder="Rut Empresa"></ion-input>\n            </ion-item>\n              <button ion-button block outline color="light"(click)="validarRut(rut)" >Validar</button>\n            </div>\n\n        </ion-col>\n      </ion-row>\n\n      <ion-row #datosUsuario class="datos">\n          <ion-col col-12 col-md-4 offset-md-4>\n              <ion-item>\n                <ion-input type="password" [(ngModel)]="token" placeholder="Password" ></ion-input>\n              </ion-item>\n          </ion-col>\n\n          <ion-col col-6 col-md-2 offset-md-4>\n            <button ion-button block outline color="light" (click)="refrescar()">Volver</button>\n          </ion-col>\n          <ion-col col-6 col-md-2>\n            <button ion-button block outline color="light" (click)="validarToken(token)" >Entrar</button>\n          </ion-col>\n\n\n          <ion-col col-8 offset-4>\n            <a href="http://www.gour-net.cl">Olvidé mi contraseña</a>\n          </ion-col>\n      </ion-row>\n\n\n\n\n\n\n      <ion-row class="pie">\n          <ion-col col-12>\n            <p>Versión 0.0.1</p>\n        </ion-col>\n      </ion-row>\n\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/ventasdiarias/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
@@ -239,21 +239,65 @@ var HomePage = /** @class */ (function () {
         this.conector = conector;
         this.callNumber = callNumber;
         this.memoria = memoria;
-        this.fechaHoy = new Date().toISOString();
+        this.fechaChile = new Date();
         this.tabla = this.memoria.empresa.Tabla;
         this.local = this.memoria.locales[0].Id;
     }
     HomePage.prototype.ngOnInit = function () {
-        this.formatoFecha(this.fechaHoy);
+        this.formatoFecha(this.fechaChile);
+        console.log("La Fecha de Chile es: ", this.fechaChile);
         this.cargaDatos();
         console.log("esta es la empresa", this.memoria.empresa);
     };
     HomePage.prototype.ionViewDidLoad = function () {
     };
+    HomePage.prototype.mesAnumero = function (mesAbreviado) {
+        var mesNum;
+        switch (mesAbreviado) {
+            case "Jan":
+                mesNum = "01";
+                break;
+            case "Feb":
+                mesNum = "02";
+                break;
+            case "Mar":
+                mesNum = "03";
+                break;
+            case "Apr":
+                mesNum = "04";
+                break;
+            case "May":
+                mesNum = "05";
+                break;
+            case "Jun":
+                mesNum = "06";
+                break;
+            case "Jul":
+                mesNum = "07";
+                break;
+            case "Aug":
+                mesNum = "08";
+                break;
+            case "Sep":
+                mesNum = "09";
+                break;
+            case "Oct":
+                mesNum = "10";
+                break;
+            case "Nov":
+                mesNum = "11";
+                break;
+            case "Dec":
+                mesNum = "12";
+        }
+        return mesNum;
+        console.log("mes Chile:", mesNum);
+    };
     HomePage.prototype.formatoFecha = function (fecha) {
-        var anno = fecha.toString().substring(0, 4);
-        var mes = fecha.toString().substring(5, 7);
+        var anno = fecha.toString().substring(11, 15);
         var dia = fecha.toString().substring(8, 10);
+        var mesPalabra = fecha.toString().substring(4, 7);
+        var mes = this.mesAnumero(mesPalabra);
         this.fechaSelect = dia + "-" + mes + "-" + anno;
     };
     HomePage.prototype.recargarDatos = function (local) {
@@ -312,7 +356,6 @@ var HomePage = /** @class */ (function () {
         document.getElementById("ventas").innerHTML = "$" + ventas.toLocaleString();
     };
     HomePage.prototype.dibujarBarras = function (ayer, hoy) {
-        console.log("llenando this barChart", this.barChart);
         this.barChart = new __WEBPACK_IMPORTED_MODULE_3_chart_js__["Chart"](this.barCanvas.nativeElement, {
             type: 'bar',
             data: {
@@ -341,13 +384,12 @@ var HomePage = /** @class */ (function () {
                 }
             }
         });
-        console.log("saliendo", this.barChart);
     };
     HomePage.prototype.dibujarLineas = function (ventas) {
         this.lineChart = new __WEBPACK_IMPORTED_MODULE_3_chart_js__["Chart"](this.lineCanvas.nativeElement, {
             type: 'line',
             data: {
-                labels: ["00:00", "00:01", "00:02", "00:03", "00:04", "00:05", "00:06", "00:07", "00:08", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
+                labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
                 datasets: [{
                         data: ventas,
                         label: "Ventas x Hora",
@@ -392,15 +434,12 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "lineCanvas", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/andre/Desktop/Programando/Informes app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar hideBackButton="true">\n\n    <ion-grid>\n        <ion-row>\n          <ion-col col-10>\n            <ion-title>\n                Ventas Diarias\n            </ion-title>\n          </ion-col>\n          <ion-col col-2>\n            <ion-buttons>\n              <button ion-button icon-only menuToggle >\n                <ion-icon name="menu"></ion-icon>\n              </button>\n            </ion-buttons>\n          </ion-col>\n        </ion-row>\n    </ion-grid>\n\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content >\n  <div class="encabezado">\n    <h1>Informe</h1><br>\n    <h2>Ventas del día</h2>\n    <p>Razón Social: {{this.memoria.empresa.Razon}}</p>\n\n<!--\n    <ion-item>\n        <ion-label>Start Time</ion-label>\n        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="fecha"></ion-datetime>\n    </ion-item>\n-->\n    <ion-item>\n       <ion-label>Locales</ion-label>\n       <ion-select [(ngModel)]="local" interface="localAlertOpts">\n         <ion-option *ngFor="let local of memoria.locales" [value]="local.Id" multiple="false">{{local.Descripcion}}</ion-option>\n       </ion-select>\n     </ion-item>\n    <button ion-button block outline color="light"(click)="recargarDatos(local)">Cargar Datos</button>\n\n  </div>\n\n<div class="graficos">\n  <ion-grid>\n\n    <ion-row>\n      <ion-col col-12>\n        <h2>Ventas</h2>\n        <h5>Total ventas del día hasta el momento</h5>\n        <h1 id="ventas" class="ventas">0</h1>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-12>\n        <h2>Ventas Diarias</h2>\n        <h5>Ventas actuales vs ventas mismo dia semana anterior</h5>\n        <canvas #barCanvas ></canvas>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-12>\n        <h2>Ventas por Hora</h2>\n        <h5>Ventas actuales vs promedio de ventas del dia durante el año</h5>\n        <canvas #lineCanvas ></canvas>\n\n      </ion-col>\n    </ion-row>\n</ion-grid>\n\n<ion-grid style="padding:0">\n  <ion-row class="club naranjo">\n    <ion-col col-12 >\n\n      <h1><ion-icon name="cloud"></ion-icon> Club Gour-net</h1>\n      <p>Puedes tener muchos informes más contratando Club Gour-net. </p>\n      <p>En esta plataforma no solo tendrás acceso a interesantes informes si no también tendrás respaldada tu base de datos completa en nuetro Data Center.</p>\n      <a href="http://gour-net.cl/#club">Saber más</a>\n    </ion-col>\n  </ion-row>\n\n<!--\n<ion-row>\n  <ion-col col-12>\n    <iframe width="100%" height="800px" src="http://gour-net.cl/"></iframe>\n  </ion-col>\n</ion-row>\n-->\n\n\n\n  <ion-row class="footer">\n    <ion-col col-12 >\n      <img src="../../assets/imgs/logo2.svg" width="50%">\n    </ion-col>\n  </ion-row>\n\n  </ion-grid>\n\n\n\n\n\n\n</div>\n<!--\n  <button ion-button (click)="call(224490070)">Llamar Oficina Gour-net</button>\n  <button ion-button (click)="call(56999189588)">Llamar Emergencias</button>\n-->\n</ion-content>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/Informes app/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/andre/Desktop/Programando/ventasdiarias/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar hideBackButton="true">\n\n    <ion-grid>\n        <ion-row>\n          <ion-col col-10>\n            <ion-title>\n                Ventas Diarias\n            </ion-title>\n          </ion-col>\n          <ion-col col-2>\n            <ion-buttons>\n              <button ion-button icon-only menuToggle >\n                <ion-icon name="menu"></ion-icon>\n              </button>\n            </ion-buttons>\n          </ion-col>\n        </ion-row>\n    </ion-grid>\n\n\n    </ion-navbar>\n</ion-header>\n\n<ion-content >\n  <div class="encabezado">\n    <h1>Informe</h1><br>\n    <h2>Ventas del día</h2>\n    <p>Razón Social: {{this.memoria.empresa.Razon}}</p>\n\n<!--\n    <ion-item>\n        <ion-label>Start Time</ion-label>\n        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="fecha"></ion-datetime>\n    </ion-item>\n-->\n    <ion-item>\n       <ion-label>Locales</ion-label>\n       <ion-select [(ngModel)]="local" interface="localAlertOpts">\n         <ion-option *ngFor="let local of memoria.locales" [value]="local.Id" multiple="false">{{local.Descripcion}}</ion-option>\n       </ion-select>\n     </ion-item>\n    <button ion-button block outline color="light"(click)="recargarDatos(local)">Cargar Datos</button>\n\n  </div>\n\n<div class="graficos">\n  <ion-grid>\n\n    <ion-row>\n      <ion-col col-12>\n        <h2>Ventas</h2>\n        <h5>Total ventas del día hasta el momento</h5>\n        <h1 id="ventas" class="ventas">0</h1>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-12>\n        <h2>Ventas Diarias</h2>\n        <h5>Ventas actuales vs ventas mismo dia semana anterior</h5>\n        <canvas #barCanvas ></canvas>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-12>\n        <h2>Ventas por Hora</h2>\n        <h5>Ventas actuales vs promedio de ventas del dia durante el año</h5>\n        <canvas #lineCanvas ></canvas>\n\n      </ion-col>\n    </ion-row>\n</ion-grid>\n\n<ion-grid style="padding:0">\n  <ion-row class="club naranjo">\n    <ion-col col-12 >\n\n      <h1><ion-icon name="cloud"></ion-icon> Club Gour-net</h1>\n      <p>Puedes tener muchos informes más contratando Club Gour-net. </p>\n      <p>En esta plataforma no solo tendrás acceso a interesantes informes si no también tendrás respaldada tu base de datos completa en nuetro Data Center.</p>\n      <a href="http://gour-net.cl/#club">Saber más</a>\n    </ion-col>\n  </ion-row>\n\n<!--\n<ion-row>\n  <ion-col col-12>\n    <iframe width="100%" height="800px" src="http://gour-net.cl/"></iframe>\n  </ion-col>\n</ion-row>\n-->\n\n\n\n  <ion-row class="footer">\n    <ion-col col-12 >\n      <img src="../../assets/imgs/logo2.svg" width="50%">\n    </ion-col>\n  </ion-row>\n\n  </ion-grid>\n\n\n\n\n\n\n</div>\n<!--\n  <button ion-button (click)="call(224490070)">Llamar Oficina Gour-net</button>\n  <button ion-button (click)="call(56999189588)">Llamar Emergencias</button>\n-->\n</ion-content>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/ventasdiarias/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_conector_conector__["a" /* ConectorProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_memoria_memoria__["a" /* MemoriaProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_conector_conector__["a" /* ConectorProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_conector_conector__["a" /* ConectorProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_call_number__["a" /* CallNumber */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_memoria_memoria__["a" /* MemoriaProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_memoria_memoria__["a" /* MemoriaProvider */]) === "function" && _e || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -441,7 +480,7 @@ var SoportePage = /** @class */ (function () {
     };
     SoportePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-soporte',template:/*ion-inline-start:"/Users/andre/Desktop/Programando/Informes app/src/pages/soporte/soporte.html"*/'<!--\n  Generated template for the SoportePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>soporte</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/Informes app/src/pages/soporte/soporte.html"*/,
+            selector: 'page-soporte',template:/*ion-inline-start:"/Users/andre/Desktop/Programando/ventasdiarias/src/pages/soporte/soporte.html"*/'<!--\n  Generated template for the SoportePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>soporte</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/ventasdiarias/src/pages/soporte/soporte.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
     ], SoportePage);
@@ -864,7 +903,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/andre/Desktop/Programando/Informes app/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar class="naranjo">\n      <ion-title>Gour-net</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button ion-item (click)="openPage(\'HomePage\')">\n        Ventas del Día\n      </button>\n      <button ion-item (click)="openPage(\'SoportePage\')">\n        Soporte\n      </button>\n\n\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/Informes app/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/andre/Desktop/Programando/ventasdiarias/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar class="naranjo">\n      <ion-title>Gour-net</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button ion-item (click)="openPage(\'HomePage\')">\n        Ventas del Día\n      </button>\n      <button ion-item (click)="openPage(\'SoportePage\')">\n        Soporte\n      </button>\n\n\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/andre/Desktop/Programando/ventasdiarias/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
