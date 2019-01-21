@@ -39,7 +39,7 @@ export class HomePage {
 ngOnInit(){
 
   this.formatoFecha(this.fechaChile);
-  console.log("La Fecha de Chile es: ", this.fechaChile)
+  console.log("La Fecha de Chile es: ", this.fechaChile);
   this.cargaDatos();
   console.log("esta es la empresa", this.memoria.empresa);
 
@@ -51,7 +51,7 @@ ionViewDidLoad() {
 
 
 mesAnumero(mesAbreviado){
-  var mesNum: "";
+  let mesNum: any;
   switch (mesAbreviado) {
   case "Jan":
     mesNum = "01";
@@ -90,7 +90,7 @@ mesAnumero(mesAbreviado){
     mesNum = "12";
 }
   return mesNum;
-  console.log("mes Chile:", mesNum);
+  console.log(mesNum);
 }
 
 
@@ -107,7 +107,7 @@ formatoFecha(fecha){
 recargarDatos(local){
   //comentado porque solo se muestran informes del dia actual//
   //this.formatoFecha(this.fecha);
-      this.formatoFecha(this.fechaHoy)
+      this.formatoFecha(this.fechaChile)
       this.local = local;
       if (this.barChart && this.lineChart){
         this.removeData(this.barChart);
