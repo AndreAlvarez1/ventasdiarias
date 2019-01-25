@@ -1,0 +1,20 @@
+version playstore
+
+# Por favor ingrese el mensaje del commit para sus cambios. Las líneas que comiencen
+# con '#' serán ignoradas, y un mensaje vacío aborta el commit.
+#
+# Committer: André Alvarez <Andre@iMac-de-Andres.iptv.microsoft.com>
+#
+# En la rama master
+# Tu rama está adelantada a 'origin/master' por 1 commit.
+#   (usa "git push" para publicar tus commits locales)
+#
+# Cambios a ser confirmados:
+#	modificado:     config.xml
+#	modificado:     package-lock.json
+#	modificado:     src/app/app.component.ts
+#	modificado:     src/pages/home/home.ts
+#	modificado:     www/build/main.js
+#	modificado:     www/build/main.js.map
+#	modificado:     www/build/vendor.js.map
+#
