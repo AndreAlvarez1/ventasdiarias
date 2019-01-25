@@ -90,7 +90,6 @@ mesAnumero(mesAbreviado){
     mesNum = "12";
 }
   return mesNum;
-  console.log(mesNum);
 }
 
 

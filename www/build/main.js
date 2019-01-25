@@ -291,7 +291,6 @@ var HomePage = /** @class */ (function () {
                 mesNum = "12";
         }
         return mesNum;
-        console.log(mesNum);
     };
     HomePage.prototype.formatoFecha = function (fecha) {
         var anno = fecha.toString().substring(11, 15);
